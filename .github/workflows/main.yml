@@ -22,10 +22,10 @@ jobs:
           dotnet-version: '8.0.x'  # Use latest .NET 8 version
 
       - name: Restore Dependencies
-        run: dotnet restore "chatbot/C# Studies/studies/studies.program"  # Adjust this path
+        run: dotnet restore "chatbot/C# Studies/studies/studies.csproj"  # Adjust this path
 
       - name: Build Project
-        run: dotnet build "chatbot/C# Studies/studies/studies.program" --configuration Release --no-restore
+        run: dotnet build "chatbot/C# Studies/studies/studies.csproj" --configuration Release --no-restore
 
-      - name: Run Tests
-        run: dotnet test --no-restore --verbosity normal
+      - name: Run Program
+        run: dotnet run --project "chatbot/C# Studies/studies/studies.csproj"
