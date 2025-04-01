@@ -1,2 +1,5 @@
 # Chatbot
 this is a chatbot for part 1
+run the c# program in the terminal using dotnet run program.cs 
+intall the dotnet first
+this will allow you to hear the gteeting wave file before our program runs
