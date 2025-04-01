@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '8.0.x'  # Use latest .NET 8 version
 
       - name: Restore Dependencies
-        run: dotnet restore ChatBot/ChatBot.csproj  # Adjust this path
+        run: dotnet restore chatbot\C# Studies\studies.program.cs
 
       - name: Build Project
         run: dotnet build ChatBot/ChatBot.csproj --configuration Release --no-restore
