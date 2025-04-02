@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Media;  // Required for playing .wav files
 using System.Threading;
 using System.IO;
-using NAudio.Wave; // Import NAudio library
 
 class Program
 {
@@ -59,32 +59,23 @@ class Program
                                       
         Simple CMD ChatBot
 --------------------------------";
-        Console.WriteLine(asciiArt);
-        Thread.Sleep(1500);
+        Console.WriteLine(asciiArt); // No typing effect here, just directly display the header
+        Thread.Sleep(1500); // Pause for effect
     }
 
     static void PlayGreeting()
     {
-        string filePath = "greeting.wav";
-
-        if (File.Exists(filePath))
+        try
         {
-            using (var audioFile = new AudioFileReader(filePath))
-            using (var outputDevice = new WaveOutEvent())
+            string filePath = "greeting.wav"; // Ensure the file exists in the same directory as the program
+            using (SoundPlayer player = new SoundPlayer(filePath))
             {
-                outputDevice.Init(audioFile);
-                outputDevice.Play();
-
-                // Wait for playback to finish
-                while (outputDevice.PlaybackState == PlaybackState.Playing)
-                {
-                    Thread.Sleep(100);
-                }
+                player.PlaySync(); // Play the sound synchronously before proceeding
             }
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine("Error: Greeting sound file not found.");
+            Console.WriteLine("Error playing greeting sound: " + ex.Message);
         }
     }
 
@@ -148,13 +139,15 @@ class Program
         }
     }
 
+    // Simulate typing effect
     static void TypeEffect(string message)
     {
         foreach (char c in message)
         {
             Console.Write(c);
-            Thread.Sleep(50);
+            Thread.Sleep(50); // Delay for effect (you can adjust the speed here)
         }
-        Console.WriteLine();
+        Console.WriteLine(); // Move to the next line after typing is complete
     }
 }
+
