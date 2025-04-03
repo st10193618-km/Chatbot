@@ -57,7 +57,7 @@ class Program
  | |____| | | | (_| | | | | | | | |  
   \_____|_| |_|\__,_|_| |_|_|_| |_|  
                                       
-        Simple CMD ChatBot
+            CMD ChatBot
 --------------------------------";
         Console.WriteLine(asciiArt); // No typing effect here, just directly display the header
         Thread.Sleep(1500); // Pause for effect
